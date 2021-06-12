@@ -1,7 +1,7 @@
+import 'package:envia2godelivery/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../colors.dart' as appColors;
-import '../../widgets/button.dart';
+import '/../colors.dart' as appColors;
 
 class RegisterForm extends StatelessWidget
 {
