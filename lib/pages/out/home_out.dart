@@ -1,8 +1,6 @@
-
-
-import 'package:envia2godelivery/blocs/bloc_general.dart';
-import 'package:envia2godelivery/widgets/button.dart';
-import 'package:envia2godelivery/widgets/fondo1.dart';
+import 'package:envia2godelivery/resource/colors.dart';
+import 'package:envia2godelivery/widgets/buttons/button.dart';
+import 'package:envia2godelivery/widgets/backgrounds/background1.dart';
 import 'package:flutter/material.dart';
 
 class HomeOutPage extends StatefulWidget {
@@ -19,37 +17,38 @@ class _HomeOutPageState extends State<HomeOutPage>
     double width = MediaQuery.of(context).size.width;
 
     return Stack(
+       alignment: Alignment.center,
       children: [
-        Fondo1(),
-        ListView(
+        Background1(),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
 					children: [
-						SizedBox(height: 20),
             Container(
-              width: width * 0.7,
-              height: height * 0.5,
-              padding: EdgeInsetsDirectional.only(top: 0.0),
+              height: height * 0.1,
+              width: width * 0.75,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100.0),
                 image: DecorationImage(
                     image: AssetImage('images/logo PNG.png'),
-                    fit: BoxFit.contain),
+                    fit: BoxFit.cover),
               ),
             ),
 						SizedBox(height: 30),
-						ButtonWidget(
-							color: Color(0xff3ea927),
-							text: 'Registrate',
+						ButtonWidget1(
+							color: getColor()[100],
+							text: 'Regístrate',
 							onClicked: ()
 							{
-								Navigator.pushNamed(context, '/register-intro');
+								Navigator.pushNamed(context, 'register');
 							}
 						),
 						SizedBox(height: 25),
-						ButtonWidget(
-							color: Theme.of(context).primaryColor,
-							text: 'Iniciar Sesion',
+						ButtonWidget1(
+							color: getColor()[50],
+							text: 'Iniciar Sesión',
 							onClicked: ()
 							{
+                	Navigator.pushNamed(context, 'sign_in');
 							}
 						)
 					]

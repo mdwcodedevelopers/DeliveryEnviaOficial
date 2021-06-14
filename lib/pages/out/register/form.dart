@@ -1,4 +1,4 @@
-import 'package:envia2godelivery/widgets/button.dart';
+import 'package:envia2godelivery/widgets/buttons/button.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '/../colors.dart' as appColors;
@@ -118,7 +118,7 @@ class RegisterForm extends StatelessWidget
 						)
 					),
 					SizedBox(height: 15),
-					ButtonWidget(
+					ButtonWidget1(
 						text: 'Continuar',
 						color: appColors.mainColors['green'],
 						onClicked: ()
@@ -162,7 +162,7 @@ class RegisterForm extends StatelessWidget
 						)
 					),
 					SizedBox(height: 15),
-					ButtonWidget(
+					ButtonWidget1(
 						color: appColors.mainColors['green'],
 						text: 'Empezar',
 						onClicked: ()
