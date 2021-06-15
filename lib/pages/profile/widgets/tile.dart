@@ -29,14 +29,19 @@ class Tile extends StatelessWidget {
             children: [
               Container(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(
-                      this.image, 
-                      fit: BoxFit.contain,
+                    Container(
                       height: width * 0.12, 
                       width: width * 0.12,
-                      color: getColor()[100]),
-                  SizedBox(width: width * 0.05),
+                      child: SvgPicture.asset(
+                        this.image, 
+                        fit: BoxFit.contain,
+                        height: width * 0.12, 
+                        width: width * 0.12,
+                        color: getColor()[100]),
+                    ),
+                  SizedBox(width: width * 0.04),
                    Text(this.text,
                       textAlign: TextAlign.start,
                       style: TextStyle(

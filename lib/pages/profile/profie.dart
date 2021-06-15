@@ -100,7 +100,7 @@ class Profile extends StatelessWidget {
     return Column(
       children: [
         Tile(image: 'images/Icono_Ubicación.svg', text: 'Tus direcciones', color: getColor()[300]),
-        Tile(image: 'images/Icono_Signo_de_Dollar.svg', text: 'Formas de pago', color: getColor()[400]),
+        Tile(image: 'images/Icono_Billete.svg', text: 'Formas de pago', color: getColor()[400]),
         Tile(image: 'images/Icono_Signo_de_Pregunta.svg', text: 'Ayuda', color: getColor()[300]),
         Tile(image: 'images/Icono_Cerrar_Sesión.svg', text: 'Cerrar sesión', color: getColor()[400]),
       ],
