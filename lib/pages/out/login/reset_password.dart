@@ -11,7 +11,6 @@ import 'package:envia2godelivery/widgets/inputs/input_password.dart';
 import 'package:envia2godelivery/widgets/labels/label_small.dart';
 import 'package:envia2godelivery/widgets/modals/modalSimple.dart';
 import 'package:flutter/material.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class ResetPassword extends StatefulWidget {
   // const ResetPassword({Key? key}) : super(key: key);

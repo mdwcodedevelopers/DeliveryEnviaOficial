@@ -1,6 +1,7 @@
 import 'package:envia2godelivery/resource/colors.dart';
 import 'package:envia2godelivery/widgets/buttons/button.dart';
 import 'package:envia2godelivery/widgets/backgrounds/background1.dart';
+import 'package:envia2godelivery/widgets/inputs/input_verification_code.dart';
 import 'package:flutter/material.dart';
 
 class HomeOutPage extends StatefulWidget {
@@ -13,8 +14,8 @@ class _HomeOutPageState extends State<HomeOutPage>
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
 
     return Stack(
        alignment: Alignment.center,

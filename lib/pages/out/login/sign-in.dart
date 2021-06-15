@@ -180,7 +180,9 @@ class _SingInPageState extends State<SingInPage>
     return Container(
       child: Column(
         children: [
-          ButtonWidget1(text: 'Continuar', onClicked: (){}, color: getColor()[100]),
+          ButtonWidget1(text: 'Continuar', onClicked: (){
+            Navigator.pushReplacementNamed(context, 'profile');
+          }, color: getColor()[100]),
          SizedBox(height: height*0.02),
          Container(
                   child: Text('Necesito ayuda',

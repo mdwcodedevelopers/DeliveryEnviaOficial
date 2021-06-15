@@ -1,4 +1,5 @@
 import 'package:envia2godelivery/blocs/bloc_general.dart';
+import 'package:envia2godelivery/resource/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -13,7 +14,7 @@ class Background1 extends StatelessWidget {
     blocGeneral.changeWidth(MediaQuery.of(context).size.width);
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+      backgroundColor: getColor()[400],
       body: SafeArea(child: 
       Container(
             decoration: BoxDecoration(

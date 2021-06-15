@@ -6,7 +6,7 @@ class ResourceGlobal {
   }
 
   double marginWidthHeardPage(double width){
-   return width * 0.05;
+   return width * 0.03;
   }
 
   double marginWidthHeardContent(double width){
