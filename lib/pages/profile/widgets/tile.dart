@@ -48,7 +48,7 @@ class Tile extends StatelessWidget {
                           color: getColor()[100],
                           fontWeight: FontWeight.bold,
                           fontFamily: 'RobotoMono',
-                          fontSize: responsive.ip(3)))
+                          fontSize: responsive.ip(2.7)))
                   ],
                 ),
               ),
