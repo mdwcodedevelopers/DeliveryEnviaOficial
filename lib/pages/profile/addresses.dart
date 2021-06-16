@@ -117,46 +117,7 @@ Widget _scaffoldModalFalse(Responsive responsive, double height, double width){
       children: [
         Column(
           children: [
-            Container(
-                margin: EdgeInsets.only(bottom: height * 0.01),
-                padding: EdgeInsets.only(bottom: height * 0.03),
-                  height: height * 0.20,
-                  width: width * 1,
-                  decoration: BoxDecoration(
-                    // border: Border.all(color: Colors.red),
-                      boxShadow: <BoxShadow>[
-                          BoxShadow(
-                            color: getColor()[300],
-                              offset: Offset(0.2, 4),
-                              spreadRadius: 2.0,
-                              blurRadius: 2.0,)
-                        ],
-                    color: getColor()[400]
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        height: width * 0.12, 
-                        width: width * 0.12,
-                        child: SvgPicture.asset('images/Icono_Ubicación.svg', 
-                          fit: BoxFit.contain,
-                          height: width * 0.12, 
-                          width: width * 0.12,
-                          color: getColor()[100]),
-                      ),
-                    SizedBox(width: width * 0.04),
-                    Text('Tus direcciones',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            color: getColor()[100],
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'RobotoMono',
-                            fontSize: responsive.ip(2.7)))
-                    ]
-                  ),
-                ),
+            (tabInitial) ? _titleTap(responsive, height, width, 'images/Icono_Ubicación.svg', 'Tus direcciones', EdgeInsets.only(left: 0)) : _titleTap(responsive, height, width, 'images/Icono_New.svg', 'Crear dirección nueva',EdgeInsets.only(left: width * 0.02)),
             Container(
               height: height * 0.65,
               child: (tabInitial == true) ?_listAddress(responsive, height, width) : _formCreateAddress(responsive, height, width),
@@ -263,87 +224,132 @@ Widget _scaffoldModalFalse(Responsive responsive, double height, double width){
         );
   }
 
+  Widget _listAddress(Responsive responsive, double height, double width){
+    return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Address(text: 'Final Calle 25 de Abril Oriente Colonia el transito #1Pasaje Paris casa 21D San Marcos San Salvador'),
+                  Address(text: 'Final Calle 25 de Abril Oriente Colonia el transito #1Pasaje Paris casa 21D San Marcos San Salvador'),
+                ],
+              ),
+            );
+    }
 
-
-Widget _listAddress(Responsive responsive, double height, double width){
-  return SingleChildScrollView(
+  Widget _formCreateAddress(Responsive responsive, double height, double width){
+      return Column(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: resourceGlobal.marginWidthHeardPage(width), vertical: height * 0.04),
+            child: Container(
+            margin: EdgeInsets.symmetric(horizontal: resourceGlobal.marginWidthHeardContent(width)),
             child: Column(
               children: [
-                Address(text: 'Final Calle 25 de Abril Oriente Colonia el transito #1Pasaje Paris casa 21D San Marcos San Salvador'),
-                Address(text: 'Final Calle 25 de Abril Oriente Colonia el transito #1Pasaje Paris casa 21D San Marcos San Salvador'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LabelLarge(text: 'Dirección:', colorbackground: getColor()[50]),
+                    SizedBox(width: width*0.03),
+                    Input1(type: TextInputType.text)
+                  ],
+                ),
+                SizedBox(height: height*0.015),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LabelLarge(text: '# de la Casa:', colorbackground: getColor()[50]),
+                    SizedBox(width: width*0.03),
+                    Input1(type: TextInputType.emailAddress)
+                  ],
+                ),
+                SizedBox(height: height*0.015),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LabelLarge(text: 'Municipio:', colorbackground: getColor()[50]),
+                    SizedBox(width: width*0.03),
+                    Input1(type: TextInputType.text)
+                  ],
+                ),
+                SizedBox(height: height*0.015),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LabelLarge(text: 'Departamento:', colorbackground: getColor()[50]),
+                    SizedBox(width: width*0.03),
+                    Input1(type: TextInputType.text),
+                  ],
+                ),
+                SizedBox(height: height*0.015),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LabelLarge(text: 'Punto de referencia:', colorbackground: getColor()[50]),
+                    SizedBox(width: width*0.03),
+                    Input1(type: TextInputType.text),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          ),
+          SizedBox(height: height*0.1),
+          ButtonWidget2(text: 'Guardar', onClicked: (){
+              blocGeneral.changeOpenModal(true);
+            }, color: getColor()[100])
+        ],
+      );
+  }
+
+Widget _titleTap(Responsive responsive, double height, double width, String image, String text, EdgeInsetsGeometry marginLeft){
+  return Container(
+            margin: EdgeInsets.only(bottom: height * 0.01),
+            padding: EdgeInsets.only(bottom: height * 0.03),
+            height: height * 0.20,
+            width: width * 1,
+            decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: getColor()[300],
+                        offset: Offset(0.2, 4),
+                        spreadRadius: 2.0,
+                        blurRadius: 2.0,)
+                  ],
+              color: getColor()[400]
+            ),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: marginLeft,
+                      height: width * 0.12, 
+                      width: width * 0.12,
+                      child: SvgPicture.asset(image, 
+                        fit: BoxFit.contain,
+                        height: width * 0.12, 
+                        width: width * 0.12,
+                        color: getColor()[100]),
+                    ),
+                  SizedBox(width: width * 0.04),
+                  Text(text,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: getColor()[100],
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'RobotoMono',
+                          fontSize: responsive.ip(2.7)))
+                  ]
+                ),
               ],
             ),
           );
-   }
-
-Widget _formCreateAddress(Responsive responsive, double height, double width){
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: resourceGlobal.marginWidthHeardPage(width), vertical: height * 0.04),
-          child: Container(
-          margin: EdgeInsets.symmetric(horizontal: resourceGlobal.marginWidthHeardContent(width)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LabelLarge(text: 'Dirección:', colorbackground: getColor()[50]),
-                  SizedBox(width: width*0.03),
-                  Input1(type: TextInputType.text)
-                ],
-              ),
-              SizedBox(height: height*0.015),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LabelLarge(text: '# de la Casa:', colorbackground: getColor()[50]),
-                  SizedBox(width: width*0.03),
-                  Input1(type: TextInputType.emailAddress)
-                ],
-              ),
-              SizedBox(height: height*0.015),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LabelLarge(text: 'Municipio:', colorbackground: getColor()[50]),
-                  SizedBox(width: width*0.03),
-                  Input1(type: TextInputType.text)
-                ],
-              ),
-              SizedBox(height: height*0.015),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LabelLarge(text: 'Departamento:', colorbackground: getColor()[50]),
-                  SizedBox(width: width*0.03),
-                  Input1(type: TextInputType.text),
-                ],
-              ),
-              SizedBox(height: height*0.015),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  LabelLarge(text: 'Punto de referencia:', colorbackground: getColor()[50]),
-                  SizedBox(width: width*0.03),
-                  Input1(type: TextInputType.text),
-                ],
-              ),
-            ],
-          ),
-         ),
-        ),
-         SizedBox(height: height*0.1),
-        ButtonWidget2(text: 'Guardar', onClicked: (){
-            blocGeneral.changeOpenModal(true);
-          }, color: getColor()[100])
-      ],
-    );
-}
-
+    }
 }
