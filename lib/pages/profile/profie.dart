@@ -25,7 +25,7 @@ class Profile extends StatelessWidget {
               AppBarProfile(text: 'PERFIL',),
               _part1(responsive, height, width),
                SizedBox(height: height * 0.02),
-              _part2(responsive, height, width),
+              _part2(context, responsive, height, width),
             ],
           ),
         ),
@@ -96,13 +96,13 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget _part2(Responsive responsive, double height, double width){
+  Widget _part2(BuildContext context, Responsive responsive, double height, double width){
     return Column(
       children: [
-        Tile(image: 'images/Icono_Ubicación.svg', text: 'Tus direcciones', color: getColor()[300]),
-        Tile(image: 'images/Icono_Billete.svg', text: 'Formas de pago', color: getColor()[400]),
-        Tile(image: 'images/Icono_Signo_de_Pregunta.svg', text: 'Ayuda', color: getColor()[300]),
-        Tile(image: 'images/Icono_Cerrar_Sesión.svg', text: 'Cerrar sesión', color: getColor()[400]),
+        Tile(image: 'images/Icono_Ubicación.svg', text: 'Tus direcciones', color: getColor()[300], onTap: (){Navigator.pushNamed(context, 'edit');}),
+        Tile(image: 'images/Icono_Billete.svg', text: 'Formas de pago', color: getColor()[400], onTap: (){Navigator.pushNamed(context, 'home_out');}),
+        Tile(image: 'images/Icono_Signo_de_Pregunta.svg', text: 'Ayuda', color: getColor()[300], onTap: null),
+        Tile(image: 'images/Icono_Cerrar_Sesión.svg', text: 'Cerrar sesión', color: getColor()[400], onTap: null),
       ],
     );
   }

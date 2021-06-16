@@ -1,4 +1,4 @@
-import 'package:envia2godelivery/widgets/buttons/button.dart';
+import 'package:envia2godelivery/widgets/buttons/button1.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '/../colors.dart' as appColors;

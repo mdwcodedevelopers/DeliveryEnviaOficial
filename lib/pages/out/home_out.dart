@@ -1,5 +1,5 @@
 import 'package:envia2godelivery/resource/colors.dart';
-import 'package:envia2godelivery/widgets/buttons/button.dart';
+import 'package:envia2godelivery/widgets/buttons/button1.dart';
 import 'package:envia2godelivery/widgets/backgrounds/background1.dart';
 import 'package:envia2godelivery/widgets/inputs/input_verification_code.dart';
 import 'package:flutter/material.dart';

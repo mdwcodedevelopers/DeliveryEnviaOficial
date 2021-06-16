@@ -4,7 +4,7 @@ import 'package:envia2godelivery/resource/colors.dart';
 import 'package:envia2godelivery/resource/global.dart';
 import 'package:envia2godelivery/resource/responsive.dart';
 import 'package:envia2godelivery/widgets/backgrounds/backgroung2.dart';
-import 'package:envia2godelivery/widgets/buttons/button.dart';
+import 'package:envia2godelivery/widgets/buttons/button1.dart';
 import 'package:envia2godelivery/widgets/buttons/button_back.dart';
 import 'package:envia2godelivery/widgets/inputs/input1.dart';
 import 'package:envia2godelivery/widgets/inputs/input_password.dart';

@@ -1,10 +1,10 @@
 import 'package:envia2godelivery/resource/responsive.dart';
 import 'package:flutter/material.dart';
 
-class LabelSmall extends StatelessWidget {
+class LabelLarge extends StatelessWidget {
   String text;
   Color colorbackground;
-  LabelSmall({@required this.text, @required this.colorbackground});
+  LabelLarge({@required this.text, @required this.colorbackground});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class LabelSmall extends StatelessWidget {
       type: MaterialType.transparency,
       child: Container(
                 alignment: Alignment.center,
-                width: width * 0.27,
+                width: width * 0.33,
                 height: height * 0.05,
                 decoration: BoxDecoration(
                   color: this.colorbackground,

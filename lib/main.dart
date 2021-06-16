@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           textTheme: TextTheme(body1: TextStyle(color: blueColor(), fontSize: 14))
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: 'sign_in',
+        initialRoute: 'addresses',
         routes: routes(),
       ),
     );

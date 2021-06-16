@@ -8,7 +8,8 @@ class Tile extends StatelessWidget {
   String image;
   String text;
   Color color;
-  Tile({@required this.image, @required this.text, @required this.color});
+  Function onTap;
+  Tile({@required this.image, @required this.text, @required this.color, @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class Tile extends StatelessWidget {
 
     
     return GestureDetector(
-      onTap: null,
+      onTap: this.onTap,
       child: Container(
         height: height * 0.1,
         color: this.color,
