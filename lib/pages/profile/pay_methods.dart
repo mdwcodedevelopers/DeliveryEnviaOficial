@@ -27,15 +27,7 @@ class _PayMethodsState extends State<PayMethods> {
   bool tabInitial = true;
   bool viewActioSheet = false;
   bool viewAlert = false;
-  
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    blocGeneral.changeOpenModal(false);
-  }
-
- 
+   
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;

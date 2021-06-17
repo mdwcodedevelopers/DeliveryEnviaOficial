@@ -3,11 +3,14 @@ import 'package:envia2godelivery/resource/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ModalSimple extends StatelessWidget {
+class ModalSiNo extends StatelessWidget {
   String legend;
-  String textButton;
-  Function onPress;
-  ModalSimple({@required this.legend, @required this.textButton, @required this.onPress});
+  String textButtonSi;
+  String textButtonNo;
+  Function onPressSi;
+  Function onPressNo;
+  Function onPressClose;
+  ModalSiNo({@required this.legend, @required this.textButtonSi, @required this.textButtonNo, @required this.onPressSi, @required this.onPressNo, @required this.onPressClose});
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +44,38 @@ class ModalSimple extends StatelessWidget {
                               fontSize: responsive.ip(2))),
                       ),
                       SizedBox(height: height * 0.01,),
-                      Material(
-                        color: Color.fromRGBO(225, 53, 189, 1),
-                        child: Text('${this.textButton}',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Montserrat-Bold',
-                              fontSize: responsive.ip(2.2))),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(width: width * 0.01),
+                          GestureDetector(
+                            onTap: () => this.onPressSi(),
+                            child: Material(
+                              color: Color.fromRGBO(225, 53, 189, 1),
+                              child: Text('${this.textButtonSi}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Montserrat-Bold',
+                                    fontSize: responsive.ip(2.2))),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => this.onPressNo(),
+                            child: Material(
+                              color: Color.fromRGBO(225, 53, 189, 1),
+                              child: Text('${this.textButtonNo}',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Montserrat-Bold',
+                                    fontSize: responsive.ip(2.2))),
+                            ),
+                          ),
+                          SizedBox(width: width * 0.01),
+                        ],
                       ),
                     ],
                   ),
@@ -59,7 +85,7 @@ class ModalSimple extends StatelessWidget {
             top: height * 0.01,
             right: height * 0.01,
             child: GestureDetector(
-              onTap: () => this.onPress(),
+              onTap: () => this.onPressClose(),
               child: Container(
                 height: width * 0.06,
                     width: width * 0.06,
