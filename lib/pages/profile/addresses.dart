@@ -128,11 +128,27 @@ Widget _scaffoldModalFalse(Responsive responsive, double height, double width){
     );
   }
 
+  
+  Widget _taps(Responsive responsive, double height, double width){
+      return (tabInitial) ? Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+             _buttonSelect(responsive, height, width, 'GUARDADAS'),
+             _buttonNoSelect(responsive, height, width, 'INGRESAR NUEVA') 
+          ],
+        ) : Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+             _buttonNoSelect(responsive, height, width, 'GUARDADAS'),
+             _buttonSelect(responsive, height, width, 'INGRESAR NUEVA') 
+          ],
+        );
+  }
+
   Widget _buttonSelect(Responsive responsive, double height, double width, String text){
     return GestureDetector(
       onTap: (){
         setState(() {
-          print('object');
           tabInitial = !tabInitial;
         });
       },
@@ -206,22 +222,6 @@ Widget _scaffoldModalFalse(Responsive responsive, double height, double width){
             ),
         ),
     );
-  }
-
-  Widget _taps(Responsive responsive, double height, double width){
-      return (tabInitial) ? Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             _buttonSelect(responsive, height, width, 'GUARDADAS'),
-             _buttonNoSelect(responsive, height, width, 'INGRESAR NUEVA') 
-          ],
-        ) : Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             _buttonNoSelect(responsive, height, width, 'GUARDADAS'),
-             _buttonSelect(responsive, height, width, 'INGRESAR NUEVA') 
-          ],
-        );
   }
 
   Widget _listAddress(Responsive responsive, double height, double width){

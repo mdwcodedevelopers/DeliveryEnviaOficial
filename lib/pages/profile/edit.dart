@@ -138,7 +138,7 @@ class Edit extends StatelessWidget {
       child: Column(
         children: [
           ButtonWidget2(text: 'Guardar Cambios', onClicked: (){
-            Navigator.pushReplacementNamed(context, 'addresses');
+           
           }, color: getColor()[100]),
         ],
       ),

@@ -23,7 +23,7 @@ class Profile extends StatelessWidget {
           child: Column(
             children: [
               AppBarProfile(text: 'PERFIL',),
-              _part1(responsive, height, width),
+              _part1(context, responsive, height, width),
                SizedBox(height: height * 0.02),
               _part2(context, responsive, height, width),
             ],
@@ -33,7 +33,7 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget _part1(Responsive responsive, double height, double width){
+  Widget _part1(BuildContext context, Responsive responsive, double height, double width){
     return Container(
       margin: EdgeInsets.symmetric(horizontal: resourceGlobal.marginWidthHeardPage(width)),
       child: Row(
@@ -68,13 +68,16 @@ class Profile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: height * 0.03),
-              Text('¡Hola Sofia!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: getColor()[200],
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat-Bold',
-                        fontSize: responsive.ip(2.5))),
+              GestureDetector(
+                onTap: (){Navigator.pushNamed(context, 'edit');},
+                child: Text('¡Hola Sofia!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: getColor()[200],
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat-Bold',
+                          fontSize: responsive.ip(2.5))),
+              ),
               Text('alecruz@gmail.com',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -99,10 +102,10 @@ class Profile extends StatelessWidget {
   Widget _part2(BuildContext context, Responsive responsive, double height, double width){
     return Column(
       children: [
-        Tile(image: 'images/Icono_Ubicación.svg', text: 'Tus direcciones', color: getColor()[300], onTap: (){Navigator.pushNamed(context, 'edit');}),
-        Tile(image: 'images/Icono_Billete.svg', text: 'Formas de pago', color: getColor()[400], onTap: (){Navigator.pushNamed(context, 'home_out');}),
+        Tile(image: 'images/Icono_Ubicación.svg', text: 'Tus direcciones', color: getColor()[300], onTap: (){Navigator.pushNamed(context, 'addresses');}),
+        Tile(image: 'images/Icono_Billete.svg', text: 'Formas de pago', color: getColor()[400], onTap: (){Navigator.pushNamed(context, 'pay_pethods');}),
         Tile(image: 'images/Icono_Signo_de_Pregunta.svg', text: 'Ayuda', color: getColor()[300], onTap: null),
-        Tile(image: 'images/Icono_Cerrar_Sesión.svg', text: 'Cerrar sesión', color: getColor()[400], onTap: null),
+        Tile(image: 'images/Icono_Cerrar_Sesión.svg', text: 'Cerrar sesión', color: getColor()[400], onTap: (){Navigator.pushReplacementNamed(context, 'home_out');}),
       ],
     );
   }
