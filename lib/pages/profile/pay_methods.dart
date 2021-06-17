@@ -408,7 +408,7 @@ class _PayMethodsState extends State<PayMethods> {
                           width: width * 0.18)
                     ),
                     SizedBox(height: height * 0.02),
-                    Text('Rargeta guardada con éxito',
+                    Text('Tarjeta guardada con éxito',
                         textAlign: TextAlign.start,
                         style: TextStyle(
                             color: getColor()[50],

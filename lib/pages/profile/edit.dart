@@ -23,28 +23,23 @@ class Edit extends StatelessWidget {
       backgroundColor: getColor()[400],
       body: SafeArea(
         child: Container(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      AppBarProfile(text: 'EDITAR',),
-                      _part1(responsive, height, width),
-                       SizedBox(height: height * 0.02),
-                      _part2(context, responsive, height, width),
-                       SizedBox(height: height * 0.02),
-                    ],
-                  ),
-                ],
-              ),
-              Positioned(
-                bottom: height * 0.2,
-                child: _part3(context, height, width, responsive)
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    AppBarProfile(text: 'EDITAR',),
+                    _part1(responsive, height, width),
+                     SizedBox(height: height * 0.02),
+                    _part2(context, responsive, height, width),
+                     SizedBox(height: height * 0.15),
+                     _part3(context, height, width, responsive)
+                  ],
                 ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

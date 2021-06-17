@@ -98,12 +98,15 @@ Widget _scaffoldModalFalse(Responsive responsive, double height, double width){
       backgroundColor: getColor()[400],
       body: SafeArea(
         child: Container(
-          child: Column(
-                    children: [
-                      AppBarProfile(text: 'DIRECCIONES',),
-                      _part1(responsive, height, width),
-                    ],
-                  ),
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+                      children: [
+                        AppBarProfile(text: 'DIRECCIONES',),
+                        _part1(responsive, height, width),
+                      ],
+                    ),
+          ),
         )
       )
     );
