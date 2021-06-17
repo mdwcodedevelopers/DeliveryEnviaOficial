@@ -5,9 +5,11 @@ import 'package:envia2godelivery/resource/colors.dart';
 import 'package:envia2godelivery/resource/global.dart';
 import 'package:envia2godelivery/resource/responsive.dart';
 import 'package:envia2godelivery/widgets/buttons/button2.dart';
+import 'package:envia2godelivery/widgets/buttons/button3.dart';
 import 'package:envia2godelivery/widgets/inputs/input2.dart';
 import 'package:envia2godelivery/widgets/inputs/input3.dart';
 import 'package:envia2godelivery/widgets/inputs/input4.dart';
+import 'package:envia2godelivery/widgets/inputs/input_verification_code.dart';
 import 'package:envia2godelivery/widgets/labels/label1.dart';
 import 'package:envia2godelivery/widgets/labels/label2.dart';
 import 'package:flutter/gestures.dart';
@@ -23,6 +25,15 @@ class PayMethods extends StatefulWidget {
 
 class _PayMethodsState extends State<PayMethods> {
   bool tabInitial = true;
+  bool viewActioSheet = false;
+  bool viewAlert = false;
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    blocGeneral.changeOpenModal(false);
+  }
 
  
   @override
@@ -36,14 +47,20 @@ class _PayMethodsState extends State<PayMethods> {
       body: SafeArea(
         child: Container(
           height: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                AppBarProfile(text: 'FORMAS DE PAGO',),
-                _part1(responsive, height, width),
-                 SizedBox(height: height * 0.02),
-              ],
-            ),
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    AppBarProfile(text: 'FORMAS DE PAGO',),
+                    _part1(responsive, height, width),
+                     SizedBox(height: height * 0.02),
+                  ],
+                ),
+              ),
+              (viewActioSheet == true) ? _actionSheet(responsive, height, width) : Container(),
+              (viewAlert == true) ? _alert(responsive, height, width) : Container()
+            ],
           ),
         ),
       ),
@@ -172,7 +189,6 @@ class _PayMethodsState extends State<PayMethods> {
           );
   }
 
-  
   Widget _creditCard(Responsive responsive, double height, double width){
       return Container(
         width: width,
@@ -250,7 +266,6 @@ class _PayMethodsState extends State<PayMethods> {
                 text: new TextSpan(
                   children: [
                     new TextSpan(
-                      
                       text: 'La tarjeta es guardada exclusivamente en el dispositivo de forma segura. Dicha información esta sujeta a nuestras políticas y uso.',
                       style: TextStyle(
                         fontFamily: "Montserrat-Light",
@@ -288,7 +303,11 @@ class _PayMethodsState extends State<PayMethods> {
                     ],
                   ),
                   SizedBox(height: height * 0.05),
-                  ButtonWidget2(text: 'Continuar', onClicked: (){ }, color: getColor()[100])
+                  ButtonWidget2(text: 'Continuar', onClicked: (){ 
+                    setState(() {
+                      viewActioSheet = true;
+                    });
+                  }, color: getColor()[100])
                 ],
               ),
             ),
@@ -297,4 +316,135 @@ class _PayMethodsState extends State<PayMethods> {
         ),
       );
   }
+
+  Widget _actionSheet(Responsive responsive, double height, double width){
+    return  Positioned(
+            bottom: 0,
+            child: Container(
+              width: width,
+              height: height * 0.7,
+              decoration: BoxDecoration(
+                color: getColor()[300],
+                border: Border.all(style: BorderStyle.solid,color: Color.fromRGBO(193, 193, 193, 1), width: 3),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40))
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(height: width * 0.05,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset(
+                        'images/Icono_Checking_en_circulo_pequeño.svg', 
+                        fit: BoxFit.contain, height: width * 0.15, 
+                        width: width * 0.15),
+                        SizedBox(width: width * 0.05,),
+                    ],
+                  ),
+                  Container(
+                      child: SvgPicture.asset(
+                        'images/Icono_Tarjeta_de_Credito_Codigo_CVC.svg', 
+                        fit: BoxFit.contain, height: width * 0.18, 
+                        width: width * 0.18)
+                  ),
+                  SizedBox(height: height * 0.05),
+                  VerificationCode(count: 3),
+                  SizedBox(height: height * 0.05),
+                  Text('Ingresa el código CVC',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: getColor()[50],
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat-Bold',
+                          fontSize: responsive.ip(2.7))),
+                  SizedBox(height: height * 0.05),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.08),
+                    child: Text('Para la autorización del uso de tu tarjeta ****7489 debes digitar los últimos 3 digitos del código que encontrarás al revés de tu tarjeta',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            color: getColor()[50],
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Montserrat-Light",
+                            fontSize: responsive.ip(1.65))),
+                  ),
+                  SizedBox(height: height * 0.05),
+                  ButtonWidget2(text: 'Continuar', onClicked: (){ 
+                    setState(() {
+                      viewActioSheet = false;
+                      viewAlert = true;
+                    });
+                   }, color: getColor()[100])
+                ],
+              ),
+            ),
+          );
+  }
+
+  Widget _alert(Responsive responsive, double height, double width){
+      return  Positioned(
+              bottom: height * 0.1,
+              child: Container(
+                width: width,
+                height: height * 0.45,
+                decoration: BoxDecoration(
+                  color: getColor()[300],
+                  border: Border.all(style: BorderStyle.solid,color: Color.fromRGBO(193, 193, 193, 1), width: 3),
+                  borderRadius: BorderRadius.circular(40)
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(height: width * 0.05,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset(
+                          'images/Icono_Checking_en_circulo_pequeño.svg', 
+                          fit: BoxFit.contain, height: width * 0.15, 
+                          width: width * 0.15),
+                          SizedBox(width: width * 0.05,),
+                      ],
+                    ),
+                    Container(
+                        child: SvgPicture.asset(
+                          'images/Icono_Tarjeta_de_Credito_Codigo_CVC.svg', 
+                          fit: BoxFit.contain, height: width * 0.18, 
+                          width: width * 0.18)
+                    ),
+                    SizedBox(height: height * 0.02),
+                    Text('Rargeta guardada con éxito',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            color: getColor()[50],
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Montserrat-Bold',
+                            fontSize: responsive.ip(2.7))),
+                    SizedBox(height: height * 0.02),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.08),
+                      child: Text('Tú tarjeta ha sido registrada satisfactoriamente',
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              color: getColor()[50],
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Montserrat-Light",
+                              fontSize: responsive.ip(1.65))),
+                    ),
+                    SizedBox(height: height * 0.05),
+                    ButtonWidget3(text: 'Ok', onClicked: (){ 
+                      setState(() {
+                        viewAlert = false;
+                      });
+                    }, color: getColor()[100])
+                  ],
+                ),
+              ),
+            );
+  }
+
+
 }

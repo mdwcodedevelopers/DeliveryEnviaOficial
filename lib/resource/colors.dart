@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 Map<int, Color> getColor(){
    
 		return <int, Color>{
+			0: Color.fromRGBO(255, 255, 255, 0), // transparente
 			50: Color(0xff213479), // azul
 			100: Color.fromRGBO(60, 171, 52, 1), // verde
 			200: Color.fromRGBO(171, 0, 225, 1), // pulpura
