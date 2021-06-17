@@ -60,7 +60,7 @@ class _SingInPageState extends State<SingInPage>
         children: [
           Container(
             width: width * 0.1,
-            child: ButtonBack(onPress: (){Navigator.pop(context);})),
+            child: ButtonBack(onPress: (){Navigator.pop(context);}, color: getColor()[50])),
           Material(
             child: Container(
               child: Text('INGRESAR DATOS',
@@ -181,7 +181,7 @@ class _SingInPageState extends State<SingInPage>
       child: Column(
         children: [
           ButtonWidget1(text: 'Continuar', onClicked: (){
-            Navigator.pushReplacementNamed(context, 'profile');
+            Navigator.pushReplacementNamed(context, 'menu');
           }, color: getColor()[100]),
          SizedBox(height: height*0.02),
          Container(

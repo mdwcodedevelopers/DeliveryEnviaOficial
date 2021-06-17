@@ -1,3 +1,4 @@
+import 'package:envia2godelivery/pages/menu/menu.dart';
 import 'package:envia2godelivery/pages/out/home_out.dart';
 import 'package:envia2godelivery/pages/out/register/form.dart';
 import 'package:envia2godelivery/pages/out/login/reset_password.dart';
@@ -18,6 +19,7 @@ Map<String, Widget Function(BuildContext)> routes() {
        'edit': (BuildContext context) => Edit(),
        'addresses': (BuildContext context) => Addresses(),
        'pay_pethods': (BuildContext context) => PayMethods(),
+       'menu': (BuildContext context) => Menu(),
   };
 
 }

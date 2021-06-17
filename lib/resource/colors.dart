@@ -12,8 +12,8 @@ Map<int, Color> getColor(){
 			400: Color.fromRGBO(255, 255, 255, 1), // Blanco de fondo
 			500: Color.fromRGBO(255, 161, 0, 1), // Amarillo mostaza
 			600: Color.fromRGBO(171, 0, 255, 1), // Pulpura
-			700: Color(0xff213479),
-			800: Color(0xff213479),
+			700: Color.fromRGBO(255, 226, 48, 1), // amarillo
+			800: Color.fromRGBO(249, 53, 189, 1), // rosado
 			900: Color(0xff213479),
 		};
 }

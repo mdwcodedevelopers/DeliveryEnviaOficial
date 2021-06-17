@@ -22,7 +22,7 @@ class AppBarProfile extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    ButtonBack(onPress: (){Navigator.pop(context);}),
+                    ButtonBack(onPress: (){Navigator.pop(context);}, color: getColor()[50]),
                     SizedBox(width: width * 0.05,),
                     Text('${this.text}',
                         textAlign: TextAlign.center,

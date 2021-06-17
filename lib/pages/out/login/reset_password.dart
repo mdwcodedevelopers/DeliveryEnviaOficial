@@ -60,7 +60,7 @@ Widget _part1(double height, double width, Responsive responsive) {
         children: [
           Container(
             width: width * 0.1,
-            child: ButtonBack(onPress: (){Navigator.pop(context);})),
+            child: ButtonBack(onPress: (){Navigator.pop(context);}, color: getColor()[50])),
           Material(
             child: Container(
               child: Text('RESTAURAR CONTRASEÑA',

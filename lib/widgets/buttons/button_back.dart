@@ -4,8 +4,9 @@ import 'package:flutter_svg/svg.dart';
 
 class ButtonBack extends StatelessWidget {
   Function onPress;
+  Color color;
 
-  ButtonBack({@required this.onPress});
+  ButtonBack({@required this.onPress, @required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class ButtonBack extends StatelessWidget {
             onPressed: this.onPress,
             padding: EdgeInsets.all(0),
             child: SvgPicture.asset(
-              'images/Icono_Flecha_Con_Circulo.svg', 
+              'images/Icono_Flecha_Con_Circulo.svg',
+               color: color, 
               fit: BoxFit.contain, height: width * 0.09, 
               width: width * 0.09),
           );
